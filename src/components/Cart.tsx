@@ -32,6 +32,7 @@ export const CartDrawer: React.FC = () => {
   const { cart, removeFromCart, updateQuantity, totalPrice, totalItems, isCartOpen, setIsCartOpen } = useCart();
   const [customerName, setCustomerName] = useState('');
   const [customerAddress, setCustomerAddress] = useState('');
+  const [orderNotes, setOrderNotes] = useState('');
   const [deliveryFee, setDeliveryFee] = useState('');
   const [error, setError] = useState('');
   const [step, setStep] = useState(1);
@@ -47,7 +48,7 @@ export const CartDrawer: React.FC = () => {
     const finalTotal = totalPrice + fee;
     const orderItems = cart.map(item => `- ${item.quantity}x ${item.name} (${item.price * item.quantity} EGP)`).join('\n');
     
-    const message = `Hello Cairo's! I'd like to place an order:\n\n*Customer Details:*\n- Name: ${customerName}\n- Address: ${customerAddress}\n${fee > 0 ? `- Delivery Fee: ${fee} EGP\n` : ''}\n*Order Items:*\n${orderItems}\n\n*Total: ${finalTotal} EGP*`;
+    const message = `Hello Cairo's! I'd like to place an order:\n\n*Customer Details:*\n- Name: ${customerName}\n- Address: ${customerAddress}\n${orderNotes ? `- Notes: ${orderNotes}\n` : ''}${fee > 0 ? `- Delivery Fee: ${fee} EGP\n` : ''}\n*Order Items:*\n${orderItems}\n\n*Total: ${finalTotal} EGP*`;
     
     const whatsappNumbers = ["201222201160", "201203475096"];
     const selectedNumber = whatsappNumbers[Math.floor(Math.random() * whatsappNumbers.length)];
@@ -175,7 +176,7 @@ export const CartDrawer: React.FC = () => {
                         value={customerName}
                         onChange={(e) => setCustomerName(e.target.value)}
                         placeholder="Enter your name"
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:border-gold/50 outline-none transition-colors placeholder:text-white/20"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:border-gold/50 outline-none transition-colors placeholder:text-white/20"
                       />
                     </div>
                     <div>
@@ -184,8 +185,18 @@ export const CartDrawer: React.FC = () => {
                         value={customerAddress}
                         onChange={(e) => setCustomerAddress(e.target.value)}
                         placeholder="Enter your full address"
-                        rows={3}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:border-gold/50 outline-none transition-colors placeholder:text-white/20 resize-none"
+                        rows={2}
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:border-gold/50 outline-none transition-colors placeholder:text-white/20 resize-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[10px] text-gold uppercase tracking-widest mb-1 block">Order Details / Notes</label>
+                      <textarea 
+                        value={orderNotes}
+                        onChange={(e) => setOrderNotes(e.target.value)}
+                        placeholder="Any special instructions?"
+                        rows={2}
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:border-gold/50 outline-none transition-colors placeholder:text-white/20 resize-none"
                       />
                     </div>
                     <div>
@@ -195,7 +206,7 @@ export const CartDrawer: React.FC = () => {
                         value={deliveryFee}
                         onChange={(e) => setDeliveryFee(e.target.value)}
                         placeholder="Enter delivery fee if known"
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:border-gold/50 outline-none transition-colors placeholder:text-white/20"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:border-gold/50 outline-none transition-colors placeholder:text-white/20"
                       />
                     </div>
                     {error && <p className="text-red-500 text-[10px] uppercase tracking-wider animate-pulse">{error}</p>}
