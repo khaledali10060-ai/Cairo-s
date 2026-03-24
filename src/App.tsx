@@ -10,6 +10,7 @@ import MenuPage from './pages/MenuPage';
 import { CartProvider } from './context/CartContext';
 import { CartIcon, CartDrawer } from './components/Cart';
 import { ChatBot } from './components/ChatBot';
+import { WhatsAppButton } from './components/WhatsAppButton';
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <CartIcon />
         <CartDrawer />
         <ChatBot />
+        <WhatsAppButton />
       </Router>
     </CartProvider>
   );
