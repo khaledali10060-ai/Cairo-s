@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "Cairo", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-gold: #C5A059;
+  --color-gold-dark: #A8894A;
+  --color-charcoal: #1A1A1A;
+  --color-charcoal-light: #2A2A2A;
+  --color-warm-white: #F9F6F0;
+  
+  --color-primary: var(--color-gold);
+  --color-primary-dark: var(--color-gold-dark);
+  --color-secondary: var(--color-charcoal);
+  --color-background: var(--color-warm-white);
+  --color-surface: #ffffff;
+  --color-text: var(--color-charcoal);
+  --color-text-muted: #666666;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+.font-arabic {
+  font-family: var(--font-arabic);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
