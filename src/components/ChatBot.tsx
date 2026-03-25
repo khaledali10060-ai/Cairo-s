@@ -52,9 +52,9 @@ export const ChatBot: React.FC = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 left-8 z-[60] bg-gold text-black p-4 rounded-full shadow-2xl flex items-center justify-center"
+        className="fixed bottom-8 left-8 z-[60] bg-gold text-black p-3 rounded-full shadow-2xl flex items-center justify-center"
       >
-        <MessageCircle size={28} />
+        <MessageCircle size={24} />
       </motion.button>
 
       {/* Chat Window */}
